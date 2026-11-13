@@ -1,0 +1,7 @@
+result
+result-*
+.direnv/
+.env
+*.tfstate*
+*.pkrvars.hcl
+!*.example.pkrvars.hcl

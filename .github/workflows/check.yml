@@ -1,0 +1,16 @@
+name: Check NixOS configuration
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - name: Evaluate and check host policy (no ARM build)
+        run: ./tests/check.sh
+      - name: Check formatting
+        run: nix fmt -- --fail-on-change
